@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Apiary.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Apiary"
+    xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
+    xmlns:hexagon="using:Apiary.UserControls"
+    Title="Glowline Hexagon App"
+    Height="800"
+    Width="1200">
+
+    <Grid>
+        <!-- Win2D Canvas for Drawing the Background -->
+        <canvas:CanvasControl x:Name="BackgroundCanvas" Draw="BackgroundCanvas_Draw" ClearColor="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+
+        <!-- ItemsControl to Display Hexagons Dynamically -->
+        <ItemsControl ItemsSource="{Binding Hexagons}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Left" Value="100" />
+                    <Setter Property="Canvas.Top" Value="100" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
+
+        <!-- Additional UI Elements Overlaid on Top -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20">
+            <TextBlock Text="Glowline Hexagon Control" FontSize="24" Foreground="White"/>
+            <Button Content="Add Another Hexagon" Command="{Binding AddHexagonCommand}" Margin="0,10,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>

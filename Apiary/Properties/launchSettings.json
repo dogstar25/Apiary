@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Apiary (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Apiary (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
